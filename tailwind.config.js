@@ -2,8 +2,14 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                "prepaf-orange": "#F79F4F",
+            },
+            fontFamily: {
+                sans: ["Roboto", "sans-serif"],
+            },
+        },
     },
     plugins: [],
 };
-
