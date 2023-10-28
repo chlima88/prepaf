@@ -14,6 +14,34 @@
 
 body { 
     font-size: 1.4rem;
-    font-weight: 500;
-    color: #1E1E1E;
+}
+
+@layer base { 
+    header, footer {
+        @apply text-prepaf-black-800 font-medium;
+    }
+
+    button {
+        @apply w-[40rem] h-[5rem] font-bold rounded;
+    }
+
+    input {
+        @apply w-[40rem] h-[5rem] rounded;
+    }
+}
+
+@layer components {
+    .input-gray {
+        @apply bg-prepaf-gray-100 
+    }
+
+    .btn-green {
+        @apply  bg-prepaf-green-400 hover:bg-prepaf-green-300 transition duration-300 text-white
+    }
+    .btn-red {
+        @apply  bg-prepaf-red-800 hover:bg-prepaf-red-600 transition text-white
+    }
+    .btn-orange {
+        @apply bg-prepaf-orange hover:bg-prepaf-orange-200 transition text-white
+    }
 }
