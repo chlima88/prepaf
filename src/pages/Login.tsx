@@ -1,5 +1,5 @@
-import bgimg from "assets/sven-kucinic-Z0KjmjxUsKs-unsplash 1.png";
-import logo from "assets/Group.svg";
+import bgimg from "assets/loginCover.png";
+import logo from "assets/logo.svg";
 import prepaf from "assets/Prepaf.png";
 import { Link } from "react-router-dom";
 export function Login() {

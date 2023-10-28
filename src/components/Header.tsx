@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import logo from "assets/Vector.svg";
+import logo from "assets/logo.svg";
 import { Link } from "react-router-dom";
 
 export function Header() {
