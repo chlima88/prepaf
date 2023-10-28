@@ -4,7 +4,7 @@ import "global.css";
 
 function App() {
     return (
-        <div className="App relative h-screen w-full">
+        <div className="App relative flex flex-col items-center min-h-screen w-full">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login />} />

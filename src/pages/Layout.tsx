@@ -8,10 +8,12 @@ type Props = {
 
 export function Layout({ children }: Props) {
     return (
-        <div className="container min-h-screen relative">
+        <>
             <Header />
-            {children}
+            <div className="flex justify-center w-[1440px]">
+                <div className="">{children}</div>
+            </div>
             <Footer />
-        </div>
+        </>
     );
 }

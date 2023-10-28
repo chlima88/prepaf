@@ -10,6 +10,8 @@ export default {
                 "prepaf-green-400": "#9ED130",
                 "prepaf-red-600": "#E93D32",
                 "prepaf-red-800": "#CE2D23",
+                "prepaf-yellow-700": "#E0BB00",
+                "prepaf-cyan-400": "#09BFD8",
                 "prepaf-gray-50": "#F8F8F8",
                 "prepaf-gray-100": "#F0F0F0",
                 "prepaf-gray-200": "#EBEBEB",
@@ -18,6 +20,9 @@ export default {
             },
             fontFamily: {
                 sans: ["Roboto", "sans-serif"],
+            },
+            gridAutoColumns: {
+                "2fr": "minmax(0, 2fr)",
             },
         },
     },

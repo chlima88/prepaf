@@ -9,24 +9,28 @@
 }
 
 :root {
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
 }
 
 body { 
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
 @layer base { 
+    body {
+        @apply bg-prepaf-gray-50;
+    }
+    
     header, footer {
         @apply text-prepaf-black-800 font-medium;
     }
-
+    
     button {
-        @apply w-[40rem] h-[5rem] font-bold rounded;
+        @apply w-[400px] h-[50px] font-bold rounded;
     }
 
     input {
-        @apply w-[40rem] h-[5rem] rounded;
+        @apply w-[400px] h-[40px] rounded;
     }
 }
 
