@@ -2,6 +2,7 @@ import bgimg from "assets/loginCover.png";
 import logo from "assets/logoColorful.svg";
 import prepaf from "assets/Prepaf.png";
 import { Link } from "react-router-dom";
+
 export function Login() {
     return (
         <div className="flex justify-center">

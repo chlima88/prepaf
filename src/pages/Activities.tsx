@@ -1,9 +1,12 @@
-import { Layout } from "pages/Layout";
+import { Calendar } from "components";
+import { Layout } from "pages";
 
 export function Activities() {
     return (
         <Layout>
-            <div className="bg-yellow-600 w-20 h-[100px]"></div>
+            {/* <div className="flex w-full flex-col items-center justify-center"> */}
+            <Calendar />
+            {/* </div> */}
         </Layout>
     );
 }

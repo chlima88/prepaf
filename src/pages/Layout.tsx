@@ -1,5 +1,5 @@
-import { Footer } from "components/Footer";
-import { Header } from "components/Header";
+import { Header, Footer, ActivityRegister } from "components";
+import { GlobalProvider } from "contexts/GlobalContext";
 import { ReactNode } from "react";
 
 type Props = {
@@ -8,12 +8,15 @@ type Props = {
 
 export function Layout({ children }: Props) {
     return (
-        <>
+        <GlobalProvider>
             <Header />
-            <div className="flex justify-center w-[1440px]">
-                <div className="">{children}</div>
+            <ActivityRegister />
+            <div className="relative flex justify-start w-full max-w-[1440px] ">
+                <div className="px-8 pt-11 w-full xl:px-44 bg-prepaf-gray-50">
+                    {children}
+                </div>
             </div>
-            <Footer />
-        </>
+            {/* <Footer /> */}
+        </GlobalProvider>
     );
 }

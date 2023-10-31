@@ -5,7 +5,7 @@ import userIcon from "assets/userIcon.svg";
 
 export function Header() {
     return (
-        <div className="flex justify-center w-screen bg-gray-200">
+        <div className="flex justify-center w-full bg-prepaf-gray-200">
             <header className="flex items-center justify-between py-4 px-8 xl:px-44 w-[1440px]">
                 <div className="flex items-center gap-16 xl:gap-32">
                     <div className="flex-shrink-0">

@@ -4,8 +4,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                "prepaf-orange": "#F79F4F",
+                "prepaf-orange-900": "#EE6020",
+                "prepaf-orange-500": "#FA9030",
+                "prepaf-orange-400": "#F79F4F",
                 "prepaf-orange-200": "#FEB470",
+                "prepaf-orange-100": "#FFDA95",
                 "prepaf-green-300": "#A5DF28",
                 "prepaf-green-400": "#9ED130",
                 "prepaf-red-600": "#E93D32",

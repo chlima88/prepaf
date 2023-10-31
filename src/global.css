@@ -8,10 +8,6 @@
     padding: 0;
 }
 
-:root {
-    /* font-size: 62.5%; */
-}
-
 body { 
     font-size: 14px;
 }
@@ -26,17 +22,21 @@ body {
     }
     
     button {
-        @apply w-[400px] h-[50px] font-bold rounded;
+        @apply h-[50px] font-bold rounded;
     }
 
     input {
-        @apply w-[400px] h-[40px] rounded;
+        @apply  h-[40px] rounded;
+    }
+
+   *:focus {
+        @apply outline-prepaf-orange-500;
     }
 }
 
 @layer components {
     .input-gray {
-        @apply bg-prepaf-gray-100 
+        @apply bg-prepaf-gray-100 w-[400px] 
     }
 
     .btn-green {
@@ -46,6 +46,6 @@ body {
         @apply  bg-prepaf-red-800 hover:bg-prepaf-red-600 transition text-white
     }
     .btn-orange {
-        @apply bg-prepaf-orange hover:bg-prepaf-orange-200 transition text-white
+        @apply bg-prepaf-orange-400 hover:bg-prepaf-orange-200 transition text-white
     }
 }
