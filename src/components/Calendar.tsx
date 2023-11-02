@@ -43,7 +43,7 @@ export function Calendar() {
                     </div>
                 </button>
             </div>
-            <div className="grid grid-cols-7 gap-1">
+            <div className="grid grid-cols-7 gap-1 relative">
                 {calendar.map((item) => item)}
             </div>
         </>

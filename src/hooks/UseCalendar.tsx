@@ -39,20 +39,31 @@ export function useCalendar() {
             ];
             calendarDays.push(
                 <p
-                    className={` text-center font-semibold min-w-[50px] h-10 p-2`}
+                    className={` text-center font-semibold min-w-[50px] h-10 p-2 truncate`}
                 >
                     {weekday[i]}
                 </p>
             );
         }
 
-        for (let i = 0; i < firstWeekDay; i++) {
+        for (let dayCounter = 0; dayCounter < firstWeekDay; dayCounter++) {
             calendarDays.push(<CalendarFill />);
         }
 
-        for (let i = 1; i <= lastMonthDay; i++) {
+        for (let dayCounter = 1; dayCounter <= lastMonthDay; dayCounter++) {
+            const date = new Date(year, month, dayCounter).valueOf();
+
+            let itemsPosition = "center";
+            if (calendarDays.length % 7 == 0) {
+                itemsPosition = "start";
+                console.log(calendarDays.length, dayCounter);
+            } else if ((calendarDays.length + 1) % 7 == 0) {
+                itemsPosition = "end";
+                console.log(calendarDays.length, dayCounter);
+            }
+
             calendarDays.push(
-                <CalendarDay day={i} month={month} year={year} />
+                <CalendarDay date={date} itemsPosition={itemsPosition} />
             );
         }
 

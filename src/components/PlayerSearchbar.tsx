@@ -1,5 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import searchIcon from "assets/search.svg";
+import { GlobalContext } from "contexts/GlobalContext";
 
 type Props = {
     target: any[];
@@ -9,6 +10,8 @@ type Props = {
 export function PlayerSearchBar({ target, outputSetter }: Props) {
     const [selected, setSelected] = useState("name");
     const [filter, setFilter] = useState("");
+
+    const { schedules } = useContext(GlobalContext);
 
     function handleInput(event: ChangeEvent<HTMLInputElement>): void {
         setFilter(event.target.value);
@@ -33,7 +36,6 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
         } else {
             outputSetter(target);
         }
-        console.log(filter);
     }, [filter, selected]);
 
     return (

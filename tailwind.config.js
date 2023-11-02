@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    safelist: [
+        {
+            pattern: /(bg|text|items)-/,
+            variants: ["before", "hover"],
+        },
+    ],
     theme: {
         extend: {
             colors: {

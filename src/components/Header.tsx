@@ -8,11 +8,13 @@ export function Header() {
         <div className="flex justify-center w-full bg-prepaf-gray-200">
             <header className="flex items-center justify-between py-4 px-8 xl:px-44 w-[1440px]">
                 <div className="flex items-center gap-16 xl:gap-32">
-                    <div className="flex-shrink-0">
-                        <img src={logo} />
-                    </div>
+                    <Link to={""}>
+                        <div className="flex-shrink-0">
+                            <img src={logo} />
+                        </div>
+                    </Link>
                     <nav>
-                        <ul className="hidden lg:flex justify-between gap-10 xl:gap-20">
+                        <ul className="hidden md:flex justify-between gap-10 xl:gap-20">
                             <li>
                                 <Link to="/players">Jogadores</Link>
                             </li>

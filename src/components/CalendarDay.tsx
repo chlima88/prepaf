@@ -1,65 +1,51 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "contexts/GlobalContext";
+import { categoryOptions } from "data/db";
+import { ActivityElement } from "./ActivityElement";
 
 type Props = {
-    year: number;
-    month: number;
-    day: number;
+    itemsPosition: string;
+    date: number;
 };
 
-type Activity = {
-    title: string;
-    category: string;
-    startTime: string;
-    endTime: string;
-    playerName?: string;
-    description?: string;
-};
-
-export function CalendarDay({ year, month, day }: Props) {
-    const [activities, setActivities] = useState<Activity[]>([]);
-    const { showModal, setShowModal } = useContext(GlobalContext);
+export function CalendarDay({ itemsPosition, date }: Props) {
+    const { modalDay, showModal, setShowModal, schedules } =
+        useContext(GlobalContext);
 
     const dayIsToday =
-        new Date(year, month, day).toDateString() == new Date().toDateString();
+        new Date(date).toDateString() == new Date().toDateString();
 
     function handleClick() {
         setShowModal(!showModal);
-
-        const activity: Activity = {
-            title: "Fisioterapia",
-            category: "recuperação",
-            startTime: "12:00",
-            endTime: "14:00",
-        };
-
-        if (activities.length < 2) {
-            setActivities([...activities, activity]);
-        } else {
-            setActivities([]);
-        }
+        modalDay.current = date;
     }
 
     return (
-        <>
+        <div
+            className="min-w-[50px] calendarday_container h-20 md:h-36 rounded 
+            overflow-hidden hover:overflow-visible"
+        >
             <div
-                className={`min-w-[50px] h-36 bg-prepaf-gray-200 rounded p-2 hover:bg-prepaf-orange-200/40  ${
-                    dayIsToday ? "text-prepaf-red-600" : ""
-                }`}
+                className={` h-20 min-h-[80px] md:min-h-[144px] hover:h-fit hover:relative transition-all
+                bg-prepaf-gray-200 rounded p-2 hover:bg-prepaf-orange-100
+                flex flex-col items-${itemsPosition} `}
                 onClick={handleClick}
             >
-                <p className="w-full text-center font-medium">{`${day}`}</p>
-                {activities.map((activity) => (
-                    <div
-                        className={`bg-prepaf-cyan-400 p-1.5 mb-1 rounded hover:cursor-pointer`}
-                    >
-                        <div className="font-medium">{activity.title}</div>
-                        <div className="text-xs">
-                            {activity.startTime} - {activity.endTime}
-                        </div>
-                    </div>
-                ))}
+                <p
+                    className={`w-full text-center font-medium ${
+                        dayIsToday ? "text-prepaf-red-600" : ""
+                    }`}
+                >{`${new Date(date).getDate()}`}</p>
+                {schedules.map(
+                    (schedule) =>
+                        schedule.day == date && (
+                            <ActivityElement
+                                schedule={schedule}
+                                itemsPosition={itemsPosition}
+                            />
+                        )
+                )}
             </div>
-        </>
+        </div>
     );
 }

@@ -1,6 +1,6 @@
 import { Layout } from "pages";
 import { PlayerCard, PlayerSearchBar } from "components";
-import { playersData } from "data/playersdb";
+import { playersData } from "data/db";
 import { useState } from "react";
 
 export function Players() {

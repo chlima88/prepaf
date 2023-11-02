@@ -1,38 +1,46 @@
 import userIcon from "assets/userIcon.svg";
 
 type Props = {
-    player: {
-        name?: string;
-        position?: string;
-        number?: string;
-        status?: string;
-        injuryRisk?: string;
-    };
+    player: Player;
+};
+
+type Player = {
+    name?: string;
+    position?: string;
+    number?: string;
+    status?: string;
+    injuryRisk?: string;
 };
 
 export function PlayerCard({ player }: Props) {
-    let injuryRiskColor;
-    let statusColor;
+    function getStyles(player: Player) {
+        let injuryRiskColor;
+        let statusColor;
 
-    if (player.injuryRisk?.toLowerCase() === "baixa") {
-        injuryRiskColor = "text-prepaf-green-400";
-    } else if (player.injuryRisk?.toLowerCase() === "alta") {
-        injuryRiskColor = "text-prepaf-red-800";
-    } else {
-        injuryRiskColor = "text-prepaf-gray-600";
+        if (player.injuryRisk?.toLowerCase() === "baixa") {
+            injuryRiskColor = "text-prepaf-green-400";
+        } else if (player.injuryRisk?.toLowerCase() === "alta") {
+            injuryRiskColor = "text-prepaf-red-800";
+        } else {
+            injuryRiskColor = "text-prepaf-gray-600";
+        }
+
+        if (player.status?.toLowerCase() === "em treino") {
+            statusColor = "text-prepaf-yellow-700";
+        } else if (player.status?.toLowerCase() === "em recuperação") {
+            statusColor = "text-prepaf-blue-400";
+        } else {
+            statusColor = "text-prepaf-gray-600";
+        }
+
+        return { injuryRiskColor, statusColor };
     }
 
-    if (player.status?.toLowerCase() === "em treino") {
-        statusColor = "text-prepaf-yellow-700";
-    } else if (player.status?.toLowerCase() === "em recuperação") {
-        statusColor = "text-prepaf-blue-400";
-    } else {
-        statusColor = "text-prepaf-gray-600";
-    }
+    const { injuryRiskColor, statusColor } = getStyles(player);
 
     return (
         <div className="w-[250px] rounded overflow-hidden">
-            <div className="flex items-center justify-center py-6 bg-prepaf-orange">
+            <div className="flex items-center justify-center py-6 bg-prepaf-orange-400">
                 <div>
                     <img src={userIcon} />
                 </div>
