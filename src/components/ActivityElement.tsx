@@ -1,6 +1,7 @@
-import { Schedule, GlobalContext } from "contexts/GlobalContext";
-import { categoryOptions } from "data/db";
 import { useContext } from "react";
+
+import { categoryOptions } from "data/db";
+import { Schedule, GlobalContext } from "contexts/GlobalContext";
 
 export function ActivityElement({
     schedule,

@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+
+import { UserMenu } from "components";
 import logo from "assets/logo.png";
-import { useState } from "react";
-import { UserMenu } from "./UserMenu";
 
 export function Header() {
     const [showMenu, setShowMenu] = useState(false);

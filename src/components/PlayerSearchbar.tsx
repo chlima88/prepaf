@@ -1,6 +1,6 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+
 import searchIcon from "assets/search.svg";
-import { GlobalContext } from "contexts/GlobalContext";
 
 type Props = {
     target: any[];

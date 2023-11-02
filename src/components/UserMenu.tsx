@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import userIcon from "assets/userIcon.svg";
 
 export function UserMenu() {

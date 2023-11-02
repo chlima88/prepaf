@@ -1,6 +1,5 @@
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
 import makeAnimated from "react-select/animated";
-const animatedComponents = makeAnimated();
 
 type Data = {
     label: string;
@@ -21,32 +20,11 @@ type Props = {
 };
 
 export function SelectBox({ data, ...props }: Props) {
+    const animatedComponents = makeAnimated();
     const options = [...data];
 
-    const dot = (color = "transparent") => ({
-        alignItems: "center",
-        display: "flex",
-
-        ":before": {
-            backgroundColor: color,
-            borderRadius: 10,
-            content: '" "',
-            display: "block",
-            marginRight: 8,
-            height: 10,
-            width: 10,
-        },
-    });
-
-    const dot2 = (color = "transparent") => {
+    const dot = (color = "transparent") => {
         return ` before:bg-${color} before:inline-block before:rounded-full before:content-[' '] before:mr-2 before:h-2.5 before:w-2.5`;
-    };
-
-    const styleConfig: StylesConfig<Data> = {
-        singleValue: (styles, { data }) => ({
-            ...styles,
-            ...dot(data.color),
-        }),
     };
 
     return (
@@ -76,11 +54,11 @@ export function SelectBox({ data, ...props }: Props) {
                         `bg-white px-6 py-2 hover:cursor-pointer hover:bg-prepaf-orange-100  ${
                             isSelected && !data.color
                                 ? " before:content-['✔'] before:mr-2.5 before:text-prepaf-green-300"
-                                : ` flex items-center ${dot2(data.color)}`
+                                : ` flex items-center ${dot(data.color)}`
                         } `,
                     placeholder: () => "text-gray-400",
                     singleValue: ({ data }: { data: Data }) =>
-                        `flex items-center ${dot2(data.color)}`,
+                        `flex items-center ${dot(data.color)}`,
                 }}
             />
         </>

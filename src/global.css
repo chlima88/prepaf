@@ -39,10 +39,6 @@ body {
 }
 
 @layer components {
-    .input-gray {
-        @apply bg-prepaf-gray-100 w-[400px] px-4
-    }
-
     .btn-green {
         @apply  bg-prepaf-green-400 hover:bg-prepaf-green-300 transition duration-300 text-white
     }

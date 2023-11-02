@@ -1,13 +1,14 @@
+import { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
+import { categoryOptions } from "data/db";
+import { SelectBox } from "components";
 import {
     GlobalContext,
     SelectOption,
     Schedule,
     Activity,
 } from "contexts/GlobalContext";
-import { useContext, useEffect, useState } from "react";
-import { SelectBox } from "components";
-import { categoryOptions } from "data/db";
 
 export function ActivityRegister() {
     const {

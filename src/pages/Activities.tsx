@@ -6,7 +6,7 @@ export function Activities() {
             <h1 className="w-full text-2xl mb-8 font-medium text-left">
                 Atividades
             </h1>
-            <Calendar />;
+            <Calendar />
         </>
     );
 }

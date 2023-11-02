@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+
 import { GlobalContext } from "contexts/GlobalContext";
-import { categoryOptions } from "data/db";
-import { ActivityElement } from "./ActivityElement";
+import { ActivityElement } from "components";
 
 type Props = {
     itemsPosition: string;
