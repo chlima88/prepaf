@@ -1,4 +1,4 @@
-import { Activities, Login, Players } from "pages";
+import { Activities, Layout, Login, Players } from "pages";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "global.css";
 
@@ -8,8 +8,10 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/activities" element={<Activities />} />
-                    <Route path="/players" element={<Players />} />
+                    <Route element={<Layout />}>
+                        <Route path="/activities" element={<Activities />} />
+                        <Route path="/players" element={<Players />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>

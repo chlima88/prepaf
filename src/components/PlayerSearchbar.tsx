@@ -11,8 +11,6 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
     const [selected, setSelected] = useState("name");
     const [filter, setFilter] = useState("");
 
-    const { schedules } = useContext(GlobalContext);
-
     function handleInput(event: ChangeEvent<HTMLInputElement>): void {
         setFilter(event.target.value);
     }
@@ -39,14 +37,14 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
     }, [filter, selected]);
 
     return (
-        <div className="w-full flex justify-start sm:justify-center select-none">
+        <div className="w-full flex justify-center select-none">
             <div className="flex justify-start md:justify-center w-fit mb-16 border bg-prepaf-gray-200 border-prepaf-gray-200 rounded-md">
                 <div className="flex gap-[1px] mr-[1px]">
                     <button
                         className={`flex w-fit items-center rounded-none rounded-s justify-center h-10 p-3 group transition-colors ${
                             selected == "name"
                                 ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
-                                : "bg-white"
+                                : "bg-white hover:text-prepaf-orange-200"
                         }`}
                         onClick={() => setSelected("name")}
                     >
@@ -56,7 +54,7 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
                         className={`flex w-fit items-center justify-center h-10 p-3 rounded-none group transition-colors ${
                             selected == "number"
                                 ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
-                                : "bg-white"
+                                : "bg-white hover:text-prepaf-orange-200"
                         }`}
                         onClick={() => setSelected("number")}
                     >
@@ -66,7 +64,7 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
                         className={`flex w-fit items-center justify-center h-10 p-3 rounded-none group transition-colors ${
                             selected == "role"
                                 ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
-                                : "bg-white"
+                                : "bg-white hover:text-prepaf-orange-200"
                         }`}
                         onClick={() => setSelected("role")}
                     >

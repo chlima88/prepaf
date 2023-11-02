@@ -1,12 +1,12 @@
 import { Calendar } from "components";
-import { Layout } from "pages";
 
 export function Activities() {
     return (
-        <Layout>
-            {/* <div className="flex w-full flex-col items-center justify-center"> */}
-            <Calendar />
-            {/* </div> */}
-        </Layout>
+        <>
+            <h1 className="w-full text-2xl mb-8 font-medium text-left">
+                Atividades
+            </h1>
+            <Calendar />;
+        </>
     );
 }

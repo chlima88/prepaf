@@ -54,13 +54,8 @@ export function useCalendar() {
             const date = new Date(year, month, dayCounter).valueOf();
 
             let itemsPosition = "center";
-            if (calendarDays.length % 7 == 0) {
-                itemsPosition = "start";
-                console.log(calendarDays.length, dayCounter);
-            } else if ((calendarDays.length + 1) % 7 == 0) {
-                itemsPosition = "end";
-                console.log(calendarDays.length, dayCounter);
-            }
+            if (calendarDays.length % 7 == 0) itemsPosition = "start";
+            if ((calendarDays.length + 1) % 7 == 0) itemsPosition = "end";
 
             calendarDays.push(
                 <CalendarDay date={date} itemsPosition={itemsPosition} />

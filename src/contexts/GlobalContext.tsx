@@ -27,12 +27,6 @@ type ActivityUpdateRequest = {
     id: string;
 };
 
-type ModalDate = {
-    day: number;
-    month: number;
-    year: number;
-};
-
 export type SelectOption = {
     value: string;
     label: string;
@@ -54,9 +48,9 @@ export type Activity = {
     description?: string;
 };
 
-const GlobalContext = createContext({} as Context);
+export const GlobalContext = createContext({} as Context);
 
-function GlobalProvider({ children }: { children: React.ReactNode }) {
+export function GlobalProvider({ children }: { children: React.ReactNode }) {
     const modalDay = useRef(0);
     const [showModal, setShowModal] = useState(false);
     const [selectedPlayers, setSelectedPlayers] = useState<SelectOption[]>([]);
@@ -90,5 +84,3 @@ function GlobalProvider({ children }: { children: React.ReactNode }) {
         </GlobalContext.Provider>
     );
 }
-
-export { GlobalContext, GlobalProvider };
