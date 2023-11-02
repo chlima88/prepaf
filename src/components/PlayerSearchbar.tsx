@@ -39,49 +39,52 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
     }, [filter, selected]);
 
     return (
-        <div className="flex relative w-full mb-16">
-            <button
-                className={`flex w-fit items-center justify-center h-10 p-3 rounded group transition-colors ${
-                    selected == "name"
-                        ? "bg-prepaf-orange-400 text-white"
-                        : "bg-white"
-                }`}
-                onClick={() => setSelected("name")}
-            >
-                Nome
-            </button>
-            <button
-                className={`flex w-fit items-center justify-center h-10 p-3 rounded group transition-colors ${
-                    selected == "number"
-                        ? "bg-prepaf-orange-400 text-white"
-                        : "bg-white"
-                }`}
-                onClick={() => setSelected("number")}
-            >
-                Numero
-            </button>
-            <button
-                className={`flex w-fit items-center justify-center h-10 p-3 rounded group transition-colors ${
-                    selected == "role"
-                        ? "bg-prepaf-orange-400 text-white"
-                        : "bg-white"
-                }`}
-                onClick={() => setSelected("role")}
-            >
-                Função
-            </button>
-
-            <div className="relative w-full">
-                <img
-                    className="absolute left-0 ml-3 translate-y-1/2 w-5"
-                    src={searchIcon}
-                />
-                <input
-                    className="w-full max-w-[400px]  border border-prepaf-gray-200 px-10 text-prepaf-gray-600 font-medium"
-                    placeholder="Pesquisar Jogador"
-                    type="text"
-                    onChange={handleInput}
-                />
+        <div className="w-full flex justify-start sm:justify-center">
+            <div className="flex justify-start md:justify-center w-fit mb-16 border bg-prepaf-gray-200 border-prepaf-gray-200 rounded-md">
+                <div className="flex gap-[1px] mr-[1px]">
+                    <button
+                        className={`flex w-fit items-center rounded-none rounded-s justify-center h-10 p-3 group transition-colors ${
+                            selected == "name"
+                                ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
+                                : "bg-white"
+                        }`}
+                        onClick={() => setSelected("name")}
+                    >
+                        Nome
+                    </button>
+                    <button
+                        className={`flex w-fit items-center justify-center h-10 p-3 rounded-none group transition-colors ${
+                            selected == "number"
+                                ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
+                                : "bg-white"
+                        }`}
+                        onClick={() => setSelected("number")}
+                    >
+                        Número
+                    </button>
+                    <button
+                        className={`flex w-fit items-center justify-center h-10 p-3 rounded-none group transition-colors ${
+                            selected == "role"
+                                ? "bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white"
+                                : "bg-white"
+                        }`}
+                        onClick={() => setSelected("role")}
+                    >
+                        Função
+                    </button>
+                </div>
+                <div className="relative w-full">
+                    <img
+                        className="absolute left-0 ml-3 translate-y-1/2 w-5"
+                        src={searchIcon}
+                    />
+                    <input
+                        className="w-full max-w-[400px] rounded-none rounded-e px-10 text-prepaf-gray-600 font-medium"
+                        placeholder="Pesquisar Jogador"
+                        type="text"
+                        onChange={handleInput}
+                    />
+                </div>
             </div>
         </div>
     );

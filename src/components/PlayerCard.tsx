@@ -39,13 +39,13 @@ export function PlayerCard({ player }: Props) {
     const { injuryRiskColor, statusColor } = getStyles(player);
 
     return (
-        <div className="w-[250px] rounded overflow-hidden">
+        <div className="min-w-[140px] sm:min-w-[230px] 2xl:min-w-[250px] transition-all rounded overflow-hidden">
             <div className="flex items-center justify-center py-6 bg-prepaf-orange-400">
-                <div>
+                <div className="w-24 sm:w-fit">
                     <img src={userIcon} />
                 </div>
             </div>
-            <div className="flex flex-col items-center pt-10 pb-7 justify-center gap-11 bg-white ">
+            <div className="flex flex-col items-center p-4 md:pt-10 md:pb-7 justify-center gap-4 md:gap-11 bg-white ">
                 <div className="">
                     <p className="text-center font-medium text-base">
                         {player.name || "Nome do Jogador"}

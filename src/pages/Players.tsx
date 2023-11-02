@@ -16,7 +16,7 @@ export function Players() {
                     target={playersData}
                     outputSetter={setFilteredPlayers}
                 />
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {filteredPlayers.map((player, idx: number) => (
                         <PlayerCard key={idx} player={player} />
                     ))}

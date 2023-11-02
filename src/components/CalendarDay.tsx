@@ -23,12 +23,11 @@ export function CalendarDay({ itemsPosition, date }: Props) {
     return (
         <div
             className="min-w-[50px] calendarday_container h-20 md:h-36 rounded 
-            overflow-hidden hover:overflow-visible"
+            overflow-hidden hover:overflow-visible cursor-pointer"
         >
             <div
                 className={` h-20 min-h-[80px] md:min-h-[144px] hover:h-fit hover:relative transition-all
-                bg-prepaf-gray-200 rounded p-2 hover:bg-prepaf-orange-100
-                flex flex-col items-${itemsPosition} `}
+                bg-prepaf-gray-200 rounded p-2 hover:bg-prepaf-orange-100`}
                 onClick={handleClick}
             >
                 <p

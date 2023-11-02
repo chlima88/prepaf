@@ -22,7 +22,7 @@ export function ActivityElement({
 
                 return (
                     <div
-                        className={`group hover:flex md:block w-full justify-${itemsPosition} `}
+                        className={`group hover:flex md:flex w-full justify-${itemsPosition}`}
                     >
                         <div
                             className={`md:hidden group-hover:hidden h-3 mb-1 bg-${style.color} 

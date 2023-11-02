@@ -1,9 +1,11 @@
 import bgimg from "assets/loginCover.png";
 import logo from "assets/logoColorful.svg";
 import prepaf from "assets/Prepaf.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login() {
+    const navigate = useNavigate();
+
     return (
         <div className="flex justify-center">
             <div className="overflow-hidden flex-1 h-screen">
@@ -31,7 +33,12 @@ export function Login() {
                         id="passwordInput"
                         type="text"
                     />
-                    <button className="block btn-green">Iniciar Sessão</button>
+                    <button
+                        className="block btn-green"
+                        onClick={() => navigate("/players")}
+                    >
+                        Iniciar Sessão
+                    </button>
                     <Link className="text-center" to="/activities">
                         Esqueceu a Senha?
                     </Link>

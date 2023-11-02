@@ -201,11 +201,12 @@ export function ActivityRegister() {
                     onClick={(event) => event.stopPropagation()}
                 >
                     <h1 className="text-xl font-semibold mb-10 flex items-center">
+                        Agendamento -{" "}
                         {new Date(modalDay.current).toLocaleDateString(
                             "pt-br",
                             {
                                 year: "numeric",
-                                month: "long",
+                                month: "2-digit",
                                 day: "2-digit",
                             }
                         )}
@@ -266,7 +267,7 @@ export function ActivityRegister() {
                                         Fim
                                     </span>
                                     <input
-                                        className="pl-16 pr-5 py-3"
+                                        className="max-sm:w-full pl-16 pr-5 py-3"
                                         type="time"
                                         value={endInput}
                                         onChange={(event) => {

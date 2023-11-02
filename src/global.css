@@ -32,6 +32,10 @@ body {
    *:focus {
         @apply outline-prepaf-orange-500;
     }
+
+    li {
+        @apply hover:text-prepaf-orange-400 transition-colors;
+    }
 }
 
 @layer components {

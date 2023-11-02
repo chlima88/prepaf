@@ -11,7 +11,7 @@ export function Calendar() {
             </h1>
             <div className="flex gap-2 w-full mb-12 items-center justify-center">
                 <button
-                    className="w-10 h-10 bg-prepaf-orange-400 rounded hover:cursor-pointer"
+                    className="w-10 h-10 bg-prepaf-orange-400 hover:bg-prepaf-orange-200 transition-colors rounded hover:cursor-pointer"
                     onClick={() => setMonth(month - 1)}
                 >
                     <div className="h-full flex items-center justify-center">
@@ -31,7 +31,7 @@ export function Calendar() {
                     </p>
                 </div>
                 <button
-                    className="w-10 h-10 bg-prepaf-orange-400 rounded"
+                    className="w-10 h-10 bg-prepaf-orange-400 hover:bg-prepaf-orange-200 transition-colors rounded"
                     onClick={() => setMonth(month + 1)}
                 >
                     <div className="h-full flex items-center justify-center">
@@ -43,7 +43,7 @@ export function Calendar() {
                     </div>
                 </button>
             </div>
-            <div className="grid grid-cols-7 gap-1 relative">
+            <div className="grid grid-cols-7 gap-1 relative select-none">
                 {calendar.map((item) => item)}
             </div>
         </>
