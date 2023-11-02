@@ -5,9 +5,9 @@ import {
     Schedule,
     Activity,
 } from "contexts/GlobalContext";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SelectBox } from "components";
-import { activitiesDb, categoryOptions } from "data/db";
+import { categoryOptions } from "data/db";
 
 export function ActivityRegister() {
     const {
@@ -27,7 +27,7 @@ export function ActivityRegister() {
     const [titleInput, setTitleInput] = useState("");
     const [startInput, setStartInput] = useState("");
     const [endInput, setEndInput] = useState("");
-    const MAX_ACTIVITIES_PER_DAY = 2;
+    const MAX_ACTIVITIES_PER_DAY = 5;
 
     useEffect(() => {
         modalDay.current = activityUpdate.date;
@@ -120,36 +120,6 @@ export function ActivityRegister() {
         setSchedules([...updatedSchedules, storedSchedule]);
     }
 
-    function updateData() {
-        const storedSchedule = schedules.find(
-            (activity) => activity.day == modalDay.current
-        )!;
-
-        const scheduleIndex = schedules.indexOf(storedSchedule);
-
-        const updatedActivities = storedSchedule.activities.map((activity) => {
-            if (activity.id == activityUpdate.id) {
-                return {
-                    id: activityUpdate.id,
-                    title: titleInput,
-                    category: selectedCategory.value,
-                    startTime: startInput,
-                    endTime: endInput,
-                    players: selectedPlayers,
-                };
-            } else {
-                return activity;
-            }
-        });
-
-        storedSchedule.activities = updatedActivities;
-
-        const updatedSchedules = schedules;
-        updatedSchedules.splice(scheduleIndex, 1);
-        setSchedules([...updatedSchedules, storedSchedule]);
-        CloseModal();
-    }
-
     function handleClickSave() {
         const storedSchedule = schedules.find(
             (activity) => activity.day == modalDay.current
@@ -170,11 +140,11 @@ export function ActivityRegister() {
             return true;
         }
 
-        const storedActivity = schedules.filter(
-            (schedule) => schedule.day == new Date(modalDay.current).getDate()
+        const schedule = schedules.find(
+            (schedule) => schedule.day == new Date(modalDay.current).valueOf()
         );
 
-        if (storedActivity.length >= MAX_ACTIVITIES_PER_DAY) {
+        if (schedule && schedule.activities.length >= MAX_ACTIVITIES_PER_DAY) {
             return true;
         }
 

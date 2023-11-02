@@ -33,7 +33,7 @@ body {
         @apply outline-prepaf-orange-500;
     }
 
-    li {
+    li > a {
         @apply hover:text-prepaf-orange-400 transition-colors;
     }
 }

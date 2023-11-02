@@ -39,7 +39,7 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
     }, [filter, selected]);
 
     return (
-        <div className="w-full flex justify-start sm:justify-center">
+        <div className="w-full flex justify-start sm:justify-center select-none">
             <div className="flex justify-start md:justify-center w-fit mb-16 border bg-prepaf-gray-200 border-prepaf-gray-200 rounded-md">
                 <div className="flex gap-[1px] mr-[1px]">
                     <button

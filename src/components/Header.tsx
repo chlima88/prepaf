@@ -16,8 +16,8 @@ export function Header() {
                             <img src={logo} />
                         </div>
                     </Link>
-                    <nav className="">
-                        <ul className="hidden md:flex justify-between gap-10 xl:gap-20">
+                    <nav className="select-none">
+                        <ul className="hidden md:flex justify-between gap-6 lg:gap-10 xl:gap-20 transition-all">
                             <li className="">
                                 <Link to="/players">Jogadores</Link>
                             </li>
@@ -36,7 +36,7 @@ export function Header() {
                     </nav>
                 </div>
                 <div className="flex items-center gap-4">
-                    <nav>
+                    <nav className="select-none">
                         <button
                             className="md:hidden flex items-center gap-2 h-fit p-0.5
                             bg-prepaf-orange-400 hover:bg-prepaf-orange-200 text-white transition-colors"
@@ -76,18 +76,21 @@ export function Header() {
                         </ul>
                     </nav>
                     <div className="flex items-center justify-center gap-3 ">
-                        <p className="hidden lg:block">Foca Silva</p>
                         <button
-                            className="flex items-center gap-1"
+                            className="group flex items-center gap-1 select-none "
                             onBlur={() =>
                                 setTimeout(() => setShowUserMenu(false), 100)
                             }
                             onMouseDown={() => setShowUserMenu(!showUserMenu)}
                         >
+                            <p className="hidden md:block m-3 group-hover:text-prepaf-orange-400 transition-colors">
+                                Foca Silva
+                            </p>
                             <div className="w-11">
                                 <img src={userIcon} />
                             </div>
                             <Icon
+                                className="block md:hidden group-hover:text-prepaf-orange-400 transition-colors"
                                 icon="bxs:down-arrow"
                                 width="10"
                                 height="10"
@@ -95,10 +98,10 @@ export function Header() {
                         </button>
                         <ul
                             className={`${
-                                showUserMenu ? "h-28" : "h-0 py-0 m-0"
+                                showUserMenu ? "h-fit" : "h-0 py-0 m-0"
                             } flex flex-col justify-center items-center gap-4 md:w-40 absolute z-10 mt-3 p-4 rounded
                             overflow-hidden transition-all border-prepaf-gray-600/20
-                            bg-prepaf-gray-200 top-14`}
+                            bg-prepaf-gray-200 top-14 select-none`}
                         >
                             <li>
                                 <Link to="/players">Profile</Link>
