@@ -7,7 +7,6 @@ import userIcon from "assets/userIcon.svg";
 export function UserMenu() {
     const [showUserMenu, setShowUserMenu] = useState(false);
 
-    console.log("UserMenu");
     return (
         <div className="flex items-center justify-center gap-3 ">
             <button

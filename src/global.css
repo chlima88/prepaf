@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body { 
     font-size: 14px;
 }

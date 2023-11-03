@@ -7,9 +7,8 @@ import logo from "assets/logo.png";
 
 export function Header() {
     const [showMenu, setShowMenu] = useState(false);
-    console.log("Header");
     return (
-        <div className="flex justify-center w-full bg-prepaf-gray-200 border-b border-prepaf-gray-600/10">
+        <div className="flex justify-center w-screen max-w-full bg-prepaf-gray-200 border-b border-prepaf-gray-600/10">
             <header className="flex items-center justify-between py-4 px-8 xl:px-44 w-[1440px]">
                 <div className="flex items-center gap-16 xl:gap-32">
                     <Link to={""}>
