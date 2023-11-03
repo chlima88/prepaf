@@ -38,7 +38,7 @@ body {
     }
 
     li > a {
-        @apply hover:text-prepaf-orange-400 transition-colors;
+        @apply hover:text-prepaf-orange-200 transition-colors;
     }
 }
 

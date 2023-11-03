@@ -14,7 +14,11 @@ export function UserMenu() {
                 onBlur={() => setTimeout(() => setShowUserMenu(false), 100)}
                 onMouseDown={() => setShowUserMenu(!showUserMenu)}
             >
-                <p className="hidden md:block m-3 group-hover:text-prepaf-orange-400 transition-colors">
+                <p
+                    className={`hidden md:block m-3 group-hover:text-prepaf-orange-400 transition-colors ${
+                        showUserMenu && "text-prepaf-orange-400"
+                    } `}
+                >
                     Foca Silva
                 </p>
                 <div className="w-11">

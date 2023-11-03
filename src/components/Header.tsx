@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { UserMenu } from "components";
 import logo from "assets/logo.png";
 
 export function Header() {
     const [showMenu, setShowMenu] = useState(false);
+    const { pathname } = useLocation();
+
     return (
         <div className="flex justify-center w-screen max-w-full bg-prepaf-gray-200 border-b border-prepaf-gray-600/10">
             <header className="flex items-center justify-between py-4 px-8 xl:px-44 w-[1440px]">
@@ -19,18 +21,42 @@ export function Header() {
                     <nav className="select-none">
                         <ul className="hidden md:flex justify-between gap-6 lg:gap-10 xl:gap-20 transition-all">
                             <li className="">
-                                <Link to="/players">Jogadores</Link>
+                                <Link
+                                    to="/players"
+                                    className={`${
+                                        pathname == "/players" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
+                                >
+                                    Jogadores
+                                </Link>
                             </li>
                             <li className="">
-                                <Link to="/activities">Atividades</Link>
+                                <Link
+                                    to="/activities"
+                                    className={`${
+                                        pathname == "/activities" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
+                                >
+                                    Atividades
+                                </Link>
                             </li>
-                            <li className="flex items-center gap-2 ">
-                                <Link to="/">Relatórios</Link>
-                                <Icon
-                                    icon="bxs:down-arrow"
-                                    width="10"
-                                    height="10"
-                                />
+                            <li className="">
+                                <Link
+                                    to="/"
+                                    className={`flex items-center gap-2 ${
+                                        pathname == "/" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
+                                >
+                                    Relatórios
+                                    <Icon
+                                        icon="bxs:down-arrow"
+                                        width="10"
+                                        height="10"
+                                    />
+                                </Link>
                             </li>
                         </ul>
                     </nav>
@@ -64,7 +90,11 @@ export function Header() {
                         >
                             <li className="w-full">
                                 <Link
-                                    className="flex justify-center py-2 px-4 hover:bg-gray-100"
+                                    className={`flex justify-center py-2 px-4 hover:bg-gray-100 
+                                    ${
+                                        pathname == "/players" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
                                     to="/players"
                                 >
                                     Jogadores
@@ -72,7 +102,11 @@ export function Header() {
                             </li>
                             <li className="w-full ">
                                 <Link
-                                    className="flex justify-center py-2 px-4 hover:bg-gray-100"
+                                    className={`flex justify-center py-2 px-4 hover:bg-gray-100
+                                    ${
+                                        pathname == "/activities" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
                                     to="/activities"
                                 >
                                     Atividades
@@ -80,7 +114,11 @@ export function Header() {
                             </li>
                             <li className="w-full">
                                 <Link
-                                    className="flex gap-1 items-center justify-center py-2 px-4 hover:bg-gray-100"
+                                    className={`flex gap-1 items-center justify-center py-2 px-4 hover:bg-gray-100 
+                                    ${
+                                        pathname == "/" &&
+                                        "text-prepaf-orange-400"
+                                    }`}
                                     to="/"
                                 >
                                     Relatórios
