@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { categoryOptions } from "data/db";
@@ -29,6 +29,11 @@ export function ActivityRegister() {
     const [startInput, setStartInput] = useState("");
     const [endInput, setEndInput] = useState("");
     const MAX_ACTIVITIES_PER_DAY = 5;
+
+    useEffect(() => {
+        window.addEventListener("keydown", CloseModal);
+        return () => window.removeEventListener("keydown", CloseModal);
+    }, []);
 
     useEffect(() => {
         modalDay.current = activityUpdate.date;
@@ -162,9 +167,6 @@ export function ActivityRegister() {
                  showModal ? "flex" : "hidden"
              }`}
             onClick={CloseModal}
-            onKeyDown={(event) => {
-                event.key == "Escape" && CloseModal();
-            }}
         >
             <div className="w-full h-screen px-8 sm:px-8 flex items-center justify-center">
                 <div
