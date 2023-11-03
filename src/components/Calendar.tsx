@@ -1,4 +1,4 @@
-import { CalendarControls } from "components";
+import { CalendarControls, CalendarGrid } from "components";
 import { useCalendar } from "hooks";
 
 export function Calendar() {
@@ -7,9 +7,7 @@ export function Calendar() {
     return (
         <>
             <CalendarControls month={month} setter={setMonth} />
-            <div className="grid grid-cols-7 gap-1 relative select-none">
-                {calendar.map((item) => item)}
-            </div>
+            <CalendarGrid calendar={calendar} />
         </>
     );
 }

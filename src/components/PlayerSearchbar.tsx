@@ -82,7 +82,7 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
                         src={searchIcon}
                     />
                     <input
-                        className="w-full max-w-[400px] rounded-none rounded-e px-10 
+                        className="w-full max-w-[400px] rounded-none rounded-e pl-10 pr-14
                         text-prepaf-gray-600 font-medium"
                         placeholder="Pesquisar Jogador"
                         type="text"

@@ -1,4 +1,4 @@
-import { CalendarDay, CalendarFill } from "components";
+import { CalendarDay } from "components";
 import { ReactNode, useEffect, useState } from "react";
 
 export function useCalendar() {
@@ -47,8 +47,23 @@ export function useCalendar() {
             );
         }
 
-        for (let dayCounter = 0; dayCounter < firstWeekDay; dayCounter++) {
-            calendarDays.push(<CalendarFill key={calendarDays.length} />);
+        for (
+            let dayCounter = firstWeekDay * -1 + 1;
+            dayCounter <= 0;
+            dayCounter++
+        ) {
+            const date = new Date(year, month, dayCounter).valueOf();
+            let itemsPosition = "center";
+            if (dayCounter == firstWeekDay * -1 + 1) itemsPosition = "start";
+
+            calendarDays.push(
+                <CalendarDay
+                    date={date}
+                    key={calendarDays.length}
+                    itemsPosition={itemsPosition}
+                    filler
+                />
+            );
         }
 
         for (let dayCounter = 1; dayCounter <= lastMonthDay; dayCounter++) {
@@ -67,8 +82,12 @@ export function useCalendar() {
             );
         }
 
-        while (calendarDays.length < GRIDSIZE) {
-            calendarDays.push(<CalendarFill key={calendarDays.length} />);
+        for (let dayCounter = 1; calendarDays.length < GRIDSIZE; dayCounter++) {
+            const date = new Date(year, month + 1, dayCounter).valueOf();
+
+            calendarDays.push(
+                <CalendarDay date={date} key={calendarDays.length} filler />
+            );
         }
 
         setCalendar(calendarDays);

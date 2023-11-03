@@ -4,11 +4,16 @@ import { GlobalContext } from "contexts/GlobalContext";
 import { ActivityElement } from "components";
 
 type Props = {
-    itemsPosition: string;
+    itemsPosition?: string;
     date: number;
+    filler: boolean;
 };
 
-export function CalendarDay({ itemsPosition, date }: Props) {
+CalendarDay.defaultProps = {
+    filler: false,
+};
+
+export function CalendarDay({ itemsPosition, date, filler }: Props) {
     const { modalDay, showModal, setShowModal, schedules } =
         useContext(GlobalContext);
 
@@ -16,7 +21,7 @@ export function CalendarDay({ itemsPosition, date }: Props) {
         new Date(date).toDateString() == new Date().toDateString();
 
     function handleClick() {
-        setShowModal(!showModal);
+        !filler && setShowModal(!showModal);
         modalDay.current = date;
     }
 
@@ -27,13 +32,15 @@ export function CalendarDay({ itemsPosition, date }: Props) {
         >
             <div
                 className={` h-20 min-h-[80px] md:min-h-[144px] hover:h-fit hover:relative transition-all
-                bg-prepaf-gray-200 rounded p-2 hover:bg-prepaf-orange-100`}
+                bg-prepaf-gray-200 rounded p-2 ${
+                    !filler && "hover:bg-prepaf-orange-100"
+                }`}
                 onClick={handleClick}
             >
                 <p
-                    className={`w-full text-center font-medium ${
-                        dayIsToday ? "text-prepaf-red-600" : ""
-                    }`}
+                    className={`w-full text-center font-medium
+                    ${dayIsToday && "text-prepaf-red-600"}
+                    ${filler && "text-gray-400"}`}
                 >{`${new Date(date).getDate()}`}</p>
                 {schedules.map(
                     (schedule) =>

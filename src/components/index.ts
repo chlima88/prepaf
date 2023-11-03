@@ -3,7 +3,7 @@ export * from "components/ActivityElement";
 export * from "components/Calendar";
 export * from "components/CalendarControls";
 export * from "components/CalendarDay";
-export * from "components/CalendarFill";
+export * from "components/CalendarGrid";
 export * from "components/Footer";
 export * from "components/Header";
 export * from "components/LoginForm";

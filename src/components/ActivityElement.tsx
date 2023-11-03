@@ -8,7 +8,7 @@ export function ActivityElement({
     itemsPosition,
 }: {
     schedule: Schedule;
-    itemsPosition: string;
+    itemsPosition?: string;
 }) {
     const { setActivityUpdate } = useContext(GlobalContext);
 
