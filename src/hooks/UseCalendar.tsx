@@ -39,6 +39,7 @@ export function useCalendar() {
             ];
             calendarDays.push(
                 <p
+                    key={calendarDays.length}
                     className={` text-center font-semibold min-w-[50px] h-10 p-2 truncate`}
                 >
                     {weekday[i]}
@@ -47,7 +48,7 @@ export function useCalendar() {
         }
 
         for (let dayCounter = 0; dayCounter < firstWeekDay; dayCounter++) {
-            calendarDays.push(<CalendarFill />);
+            calendarDays.push(<CalendarFill key={calendarDays.length} />);
         }
 
         for (let dayCounter = 1; dayCounter <= lastMonthDay; dayCounter++) {
@@ -58,12 +59,16 @@ export function useCalendar() {
             if ((calendarDays.length + 1) % 7 == 0) itemsPosition = "end";
 
             calendarDays.push(
-                <CalendarDay date={date} itemsPosition={itemsPosition} />
+                <CalendarDay
+                    key={calendarDays.length}
+                    date={date}
+                    itemsPosition={itemsPosition}
+                />
             );
         }
 
         while (calendarDays.length < GRIDSIZE) {
-            calendarDays.push(<CalendarFill />);
+            calendarDays.push(<CalendarFill key={calendarDays.length} />);
         }
 
         setCalendar(calendarDays);

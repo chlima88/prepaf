@@ -23,6 +23,7 @@ export function ActivityElement({
 
                 return (
                     <div
+                        key={activity.id}
                         className={`group hover:flex md:flex w-full justify-${itemsPosition}`}
                     >
                         <div
@@ -30,7 +31,6 @@ export function ActivityElement({
                             border border-prepaf-gray-200 rounded hover:cursor-pointer hover:z-20`}
                         ></div>
                         <div
-                            key={activity.id}
                             className={`hidden md:flex-none md:block group-hover:inline-block w-full 
                             max-xl:hover:w-[152px] transition-all p-1.5 mb-1 
                             bg-${style.color} text-${style.textColor} border border-prepaf-gray-200

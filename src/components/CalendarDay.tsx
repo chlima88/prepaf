@@ -39,6 +39,7 @@ export function CalendarDay({ itemsPosition, date }: Props) {
                     (schedule) =>
                         schedule.day == date && (
                             <ActivityElement
+                                key={schedule.day}
                                 schedule={schedule}
                                 itemsPosition={itemsPosition}
                             />
