@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import searchIcon from "assets/search.svg";
+import { Icon } from "@iconify/react";
 
 type Props = {
     target: any[];
@@ -11,7 +12,7 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
     const [selected, setSelected] = useState("name");
     const [filter, setFilter] = useState("");
 
-    function handleInput(event: ChangeEvent<HTMLInputElement>): void {
+    function handleInput(event: React.ChangeEvent<HTMLInputElement>): void {
         setFilter(event.target.value);
     }
 
@@ -35,6 +36,10 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
             outputSetter(target);
         }
     }, [filter, selected]);
+
+    function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
+        event.key == "Escape" && setFilter("");
+    }
 
     return (
         <div className="w-full flex justify-center select-none">
@@ -77,11 +82,26 @@ export function PlayerSearchBar({ target, outputSetter }: Props) {
                         src={searchIcon}
                     />
                     <input
-                        className="w-full max-w-[400px] rounded-none rounded-e px-10 text-prepaf-gray-600 font-medium"
+                        className="w-full max-w-[400px] rounded-none rounded-e px-10 
+                        text-prepaf-gray-600 font-medium"
                         placeholder="Pesquisar Jogador"
                         type="text"
+                        value={filter}
                         onChange={handleInput}
+                        onKeyDown={handleKeyDown}
                     />
+
+                    <button
+                        className={`absolute top-0 right-0 flex items-center justify-center h-10 
+                        p-3 rounded-s-none transition-all text-white bg-prepaf-orange-400
+                        hover:bg-prepaf-orange-200 
+                        ${filter ? "flex" : "hidden"}`}
+                        onClick={() => {
+                            setFilter("");
+                        }}
+                    >
+                        <Icon icon="fe:close" width={25} />
+                    </button>
                 </div>
             </div>
         </div>
