@@ -1,11 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
-import { useContext, useState } from "react";
-import { ModalContext } from "contexts";
-import { activitiesDb } from "data/db";
+import { useContext } from "react";
+import { GlobalContext, ModalContext } from "contexts";
 import { Activity, CreateActivityDTO, Schedule } from "types";
 
 export function useSchedulesDatabase() {
-    const [schedules, setSchedules] = useState<Schedule[]>([...activitiesDb]);
+    const { schedules, setSchedules } = useContext(GlobalContext);
     const { selectedSchedule } = useContext(ModalContext);
 
     function getSchedule(scheduleDate: number) {
@@ -18,6 +17,7 @@ export function useSchedulesDatabase() {
             day: selectedSchedule.date,
             activities: [createActivity(activityDTO)],
         };
+        // updatedSchedules = [...schedules, newSchedule];
         setSchedules([...schedules, newSchedule]);
     }
 
@@ -32,6 +32,10 @@ export function useSchedulesDatabase() {
             : [...storedSchedule.activities, createActivity(activityDTO)];
 
         storedSchedule.activities = [...updatedActivities];
+
+        // updatedSchedules = schedules;
+        // updatedSchedules.splice(scheduleIndex, 1);
+        // updatedSchedules = [...updatedSchedules, storedSchedule];
 
         const updatedSchedules = schedules;
         updatedSchedules.splice(scheduleIndex, 1);
