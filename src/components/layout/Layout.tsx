@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 
-import { Header, Footer, ActivityRegister } from "components";
+import { Header, Footer } from "components/layout";
 import { GlobalProvider, ModalProvider } from "contexts";
+import { ActivityRegister } from "components/activity-register";
 
 export function Layout() {
     return (

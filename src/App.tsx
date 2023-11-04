@@ -1,5 +1,6 @@
-import { Activities, Layout, Login, Players } from "pages";
+import { Activities, Login, Players } from "pages";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Layout } from "components/layout";
 import "global.css";
 
 function App() {

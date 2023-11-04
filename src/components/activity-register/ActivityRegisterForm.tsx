@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { GlobalContext, ModalContext } from "contexts";
 
 import { SelectBox } from "components";
 import { categoryOptions } from "data/db";
-import { Activity, GlobalContext, ModalContext, SelectOption } from "contexts";
 import { useSchedulesDatabase } from "hooks";
+import { Activity, SelectOption } from "types";
 
 export function ActivityRegisterForm() {
     const { playersData } = useContext(GlobalContext);
@@ -15,15 +16,15 @@ export function ActivityRegisterForm() {
     const [descriptionInput, setDescriptionInput] = useState("");
     const [startInput, setStartInput] = useState("");
     const [endInput, setEndInput] = useState("");
-    const [selectedPlayers, setSelectedPlayers] = useState<SelectOption[]>([]);
-    const [selectedCategory, setSelectedCategory] = useState<SelectOption>(
+    const [playersSelect, setPlayersSelect] = useState<SelectOption[]>([]);
+    const [categorySelect, setCategorySelect] = useState<SelectOption>(
         {} as SelectOption
     );
 
     function isInvalidFormData(): boolean {
         const MAX_ACTIVITIES_PER_DAY = 5;
 
-        if (!selectedCategory.value) {
+        if (!categorySelect.value) {
             return true;
         }
         const schedule = getSchedule(selectedSchedule.date);
@@ -39,11 +40,16 @@ export function ActivityRegisterForm() {
 
     function updateForm(activity: Activity) {
         setTitleInput(activity.title);
-        setSelectedCategory({
+        setCategorySelect({
             value: activity.category,
             label: activity.category,
         });
-        setSelectedPlayers([...activity.players!]);
+        setPlayersSelect(
+            activity.players!.map((player) => ({
+                value: player,
+                label: player,
+            }))
+        );
         setStartInput(activity.startTime);
         setEndInput(activity.endTime);
         setDescriptionInput(activity.description || "");
@@ -51,11 +57,11 @@ export function ActivityRegisterForm() {
 
     function closeModal() {
         setTitleInput("");
-        setSelectedCategory({
+        setCategorySelect({
             value: "",
             label: "",
         });
-        setSelectedPlayers([]);
+        setPlayersSelect([]);
         setStartInput("");
         setEndInput("");
         setDescriptionInput("");
@@ -66,10 +72,10 @@ export function ActivityRegisterForm() {
     function handleClickSave() {
         const formData = {
             title: titleInput,
-            category: selectedCategory.value,
+            category: categorySelect.value,
             startTime: startInput,
             endTime: endInput,
-            players: selectedPlayers,
+            players: playersSelect.map((player) => player.value),
             description: descriptionInput,
         };
 
@@ -121,11 +127,11 @@ export function ActivityRegisterForm() {
                     hideSelectedOptions={false}
                     value={
                         categoryOptions.find(
-                            (item) => item.value === selectedCategory.value
+                            (item) => item.value === categorySelect.value
                         ) ?? null
                     }
                     onChange={(event: SelectOption) =>
-                        setSelectedCategory(
+                        setCategorySelect(
                             event
                                 ? event
                                 : (categoryOptions.find(
@@ -169,9 +175,9 @@ export function ActivityRegisterForm() {
                 isMulti
                 closeMenuOnSelect={false}
                 hideSelectedOptions={false}
-                value={selectedPlayers}
+                value={playersSelect}
                 onChange={(event: SelectOption[]) =>
-                    setSelectedPlayers([...event])
+                    setPlayersSelect([...event])
                 }
                 data={playersData.map((player) => ({
                     value: player.name,

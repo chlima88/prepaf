@@ -1,13 +1,13 @@
-import { CalendarControls, CalendarGrid } from "components";
+import { CalendarControls, CalendarGrid } from "components/calendar";
 import { useCalendar } from "hooks";
 
 export function Calendar() {
-    const { month, setMonth, calendar } = useCalendar();
+    const { month, setMonth, calendarData } = useCalendar();
 
     return (
         <>
             <CalendarControls month={month} setter={setMonth} />
-            <CalendarGrid calendar={calendar} />
+            <CalendarGrid data={calendarData} />
         </>
     );
 }

@@ -1,15 +1,8 @@
 import userIcon from "assets/userIcon.svg";
+import { Player } from "types";
 
 type Props = {
     player: Player;
-};
-
-type Player = {
-    name?: string;
-    position?: string;
-    number?: string;
-    status?: string;
-    injuryRisk?: string;
 };
 
 export function PlayerCard({ player }: Props) {

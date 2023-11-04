@@ -1,7 +1,8 @@
 import { useContext } from "react";
 
-import { GlobalContext, ModalContext } from "contexts";
-import { ActivityElement } from "components";
+import { ModalContext } from "contexts";
+import { ActivityElement } from "components/calendar";
+import { useSchedulesDatabase } from "hooks";
 
 type Props = {
     itemsPosition?: string;
@@ -15,10 +16,11 @@ CalendarDay.defaultProps = {
 
 export function CalendarDay({ itemsPosition, date, filler }: Props) {
     const { setSelectedSchedule } = useContext(ModalContext);
-    const { schedules } = useContext(GlobalContext);
+    const { getSchedule } = useSchedulesDatabase();
 
     const dayIsToday =
         new Date(date).toDateString() == new Date().toDateString();
+    const schedule = getSchedule(date);
 
     function handleClick() {
         !filler && setSelectedSchedule({ date });
@@ -41,15 +43,12 @@ export function CalendarDay({ itemsPosition, date, filler }: Props) {
                     ${dayIsToday && "text-prepaf-red-600"}
                     ${filler && "text-gray-400"}`}
                 >{`${new Date(date).getDate()}`}</p>
-                {schedules.map(
-                    (schedule) =>
-                        schedule.day == date && (
-                            <ActivityElement
-                                key={schedule.day}
-                                schedule={schedule}
-                                itemsPosition={itemsPosition}
-                            />
-                        )
+                {schedule && (
+                    <ActivityElement
+                        key={schedule.day}
+                        schedule={schedule}
+                        itemsPosition={itemsPosition}
+                    />
                 )}
             </div>
         </div>

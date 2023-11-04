@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { ModalContext } from "contexts";
-import { ActivityRegisterForm } from "components";
+import { ActivityRegisterForm } from "components/activity-register";
 
 export function ActivityRegister() {
     const { showModal, setShowModal, selectedSchedule } =

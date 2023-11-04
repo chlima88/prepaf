@@ -1,10 +1,16 @@
-import { CalendarDay } from "components";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+type CalendarData = {
+    key: number;
+    date: number;
+    itemsPosition: string;
+    filler: boolean;
+}[];
 
 export function useCalendar() {
     const [month, setMonth] = useState(new Date().getMonth());
     const [year, setYear] = useState(new Date().getFullYear());
-    const [calendar, setCalendar] = useState([] as (ReactNode | JSX.Element)[]);
+    const [calendarData, setCalendarData] = useState([] as CalendarData);
 
     useEffect(() => {
         createCalendar();
@@ -15,25 +21,6 @@ export function useCalendar() {
         const calendarDays = [];
         const firstWeekDay = new Date(year, month, 1).getDay();
         const lastMonthDay = new Date(year, month + 1, 0).getDate();
-
-        [
-            "Domingo",
-            "Segunda",
-            "Terça",
-            "Quarta",
-            "Quinta",
-            "Sexta",
-            "Sabado",
-        ].map((weekday) => {
-            calendarDays.push(
-                <p
-                    key={calendarDays.length}
-                    className={` text-center font-semibold min-w-[50px] h-10 p-2 truncate`}
-                >
-                    {weekday}
-                </p>
-            );
-        });
 
         for (
             let dayCounter = firstWeekDay * -1 + 1;
@@ -48,18 +35,16 @@ export function useCalendar() {
             let filler = true;
             if (dayCounter > 0 && dayCounter <= lastMonthDay) filler = false;
 
-            calendarDays.push(
-                <CalendarDay
-                    date={date}
-                    key={calendarDays.length}
-                    itemsPosition={itemsPosition}
-                    filler={filler}
-                />
-            );
+            calendarDays.push({
+                date,
+                key: calendarDays.length,
+                itemsPosition,
+                filler,
+            });
         }
 
-        setCalendar(calendarDays);
+        setCalendarData(calendarDays);
     }
 
-    return { calendar, month, setMonth, year, setYear };
+    return { calendarData, month, setMonth, year, setYear };
 }

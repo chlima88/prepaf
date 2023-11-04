@@ -121,7 +121,7 @@ export const activitiesDb = [
                 category: "treino",
                 startTime: "10:00",
                 endTime: "12:00",
-                players: [],
+                players: ["Jogador 1"],
                 description: "Treino",
             },
         ],

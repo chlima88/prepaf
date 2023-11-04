@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link, useLocation } from "react-router-dom";
 
-import { UserMenu } from "components";
+import { UserMenu } from "components/layout";
 import logo from "assets/logo.png";
 
 export function Header() {

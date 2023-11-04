@@ -1,2 +1,2 @@
 export * from "./UseCalendar";
-export * from "./UseRepository";
+export * from "./useSchedulesDatabase";

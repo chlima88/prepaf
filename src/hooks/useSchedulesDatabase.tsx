@@ -2,36 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useContext, useState } from "react";
 import { ModalContext } from "contexts";
 import { activitiesDb } from "data/db";
-
-type CreateActivityDTO = {
-    title: string;
-    category: string;
-    startTime: string;
-    endTime: string;
-    players?: SelectOption[];
-    description?: string;
-};
-
-export type Schedule = {
-    day: number;
-    activities: Activity[];
-};
-
-export type Activity = {
-    id: string;
-    title: string;
-    category: string;
-    startTime: string;
-    endTime: string;
-    players?: SelectOption[];
-    description?: string;
-};
-
-export type SelectOption = {
-    value: string;
-    label: string;
-    color?: string;
-};
+import { Activity, CreateActivityDTO, Schedule } from "types";
 
 export function useSchedulesDatabase() {
     const [schedules, setSchedules] = useState<Schedule[]>([...activitiesDb]);

@@ -1,7 +1,8 @@
 import { useContext } from "react";
 
 import { categoryOptions } from "data/db";
-import { Schedule, ModalContext } from "contexts";
+import { ModalContext } from "contexts";
+import { Schedule } from "types";
 
 export function ActivityElement({
     schedule,

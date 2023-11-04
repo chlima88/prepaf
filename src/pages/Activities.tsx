@@ -1,4 +1,4 @@
-import { Calendar } from "components";
+import { Calendar } from "components/calendar";
 
 export function Activities() {
     return (
