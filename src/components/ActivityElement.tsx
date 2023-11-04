@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { categoryOptions } from "data/db";
-import { Schedule, GlobalContext } from "contexts/GlobalContext";
+import { Schedule, ModalContext } from "contexts";
 
 export function ActivityElement({
     schedule,
@@ -10,7 +10,7 @@ export function ActivityElement({
     schedule: Schedule;
     itemsPosition?: string;
 }) {
-    const { setActivityUpdate } = useContext(GlobalContext);
+    const { setSelectedSchedule } = useContext(ModalContext);
 
     return (
         <>
@@ -37,9 +37,9 @@ export function ActivityElement({
                             rounded hover:cursor-pointer group hover:z-20`}
                             onClick={(e) => {
                                 e.stopPropagation();
-                                setActivityUpdate({
+                                setSelectedSchedule({
                                     date: schedule.day,
-                                    id: activity.id,
+                                    activityId: activity.id,
                                 });
                             }}
                         >

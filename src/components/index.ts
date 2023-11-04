@@ -1,4 +1,5 @@
 export * from "components/ActivityRegister";
+export * from "components/ActivityRegisterForm";
 export * from "components/ActivityElement";
 export * from "components/Calendar";
 export * from "components/CalendarControls";

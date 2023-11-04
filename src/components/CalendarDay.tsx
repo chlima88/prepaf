@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { GlobalContext } from "contexts/GlobalContext";
+import { GlobalContext, ModalContext } from "contexts";
 import { ActivityElement } from "components";
 
 type Props = {
@@ -14,15 +14,14 @@ CalendarDay.defaultProps = {
 };
 
 export function CalendarDay({ itemsPosition, date, filler }: Props) {
-    const { modalDay, showModal, setShowModal, schedules } =
-        useContext(GlobalContext);
+    const { setSelectedSchedule } = useContext(ModalContext);
+    const { schedules } = useContext(GlobalContext);
 
     const dayIsToday =
         new Date(date).toDateString() == new Date().toDateString();
 
     function handleClick() {
-        !filler && setShowModal(!showModal);
-        modalDay.current = date;
+        !filler && setSelectedSchedule({ date });
     }
 
     return (
