@@ -113,7 +113,7 @@ export const categoryOptions = [
 
 export const activitiesDb = [
     {
-        day: 1698807600000, // 2023-11-01
+        date: 1698807600000, // 2023-11-01
         activities: [
             {
                 id: "0a162727-6032-40c7-afcb-98058888a7f8",
@@ -127,7 +127,7 @@ export const activitiesDb = [
         ],
     },
     {
-        day: 1699671600000, //2023-11-11
+        date: 1699671600000, //2023-11-11
         activities: [
             {
                 id: "acbeb0b3-d1b3-4dd4-9ef3-5531bf676d3d",
@@ -141,7 +141,7 @@ export const activitiesDb = [
         ],
     },
     {
-        day: 1699758000000, //2023-11-12
+        date: 1699758000000, //2023-11-12
         activities: [
             {
                 id: "0530b08b-a099-4f65-a8d4-8fade779707f",
@@ -155,7 +155,7 @@ export const activitiesDb = [
         ],
     },
     {
-        day: 1700794800000, //2023-11-24
+        date: 1700794800000, //2023-11-24
         activities: [
             {
                 id: "73efafa5-a726-450e-8392-1123b46b948d",
@@ -169,7 +169,7 @@ export const activitiesDb = [
         ],
     },
     {
-        day: 1700967600000, //2023-11-26
+        date: 1700967600000, //2023-11-26
         activities: [
             {
                 id: "d6963844-73a9-4a7a-97d2-4cd76e3623f2",

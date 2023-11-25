@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 
 import { categoryOptions } from "data/db";
 import { ModalContext } from "contexts";
-import { Schedule } from "types";
+import { Activity, Schedule } from "types";
 
 export function ActivityElement({
     schedule,
@@ -12,6 +12,65 @@ export function ActivityElement({
     itemsPosition?: string;
 }) {
     const { setSelectedSchedule } = useContext(ModalContext);
+    const activityRef = useRef<HTMLDivElement>(null);
+
+    function handleMouseDown(event: React.MouseEvent<HTMLDivElement>) {
+        event.preventDefault();
+
+        const { clientX, clientY, currentTarget } = event;
+        window.onmouseup = () => handleMouseUp(currentTarget);
+
+        const coord = {
+            x: clientX,
+            y: clientY,
+        };
+        window.onmousemove = (event) =>
+            dragElement(
+                event,
+                { ...coord },
+                currentTarget,
+                (dragX: any, dragY: any) => {
+                    coord.x = dragX;
+                    coord.y = dragY;
+                }
+            );
+    }
+
+    function handleMouseUp(currentTarget: HTMLDivElement): void {
+        // currentTarget.classList.remove("absolute");
+        window.onmouseup = null;
+        window.onmousemove = null;
+    }
+
+    function handleDrag(
+        event: React.DragEvent<HTMLDivElement>,
+        dragActivity: { date: number; activityId: string }
+    ) {
+        // setSelectedSchedule({
+        //     date: dragActivity.sd,
+        //     activityId: dragActivity.aid,
+        //     eventType: "drag",
+        // });
+        // console.log("AE Drag: id -> ", dragActivity);
+        event.dataTransfer.setData("text/plain", JSON.stringify(dragActivity));
+    }
+
+    function dragElement(
+        event: MouseEvent,
+        coord: { x: number; y: number },
+        currentTarget: HTMLDivElement,
+        callback: Function
+    ) {
+        event.preventDefault();
+
+        callback(event.clientX, event.clientY);
+        let diffX = event.clientX - coord.x;
+        let diffY = event.clientY - coord.y;
+        currentTarget.classList.add("absolute");
+        currentTarget.classList.add("w-fit");
+        currentTarget.style.left = currentTarget.offsetLeft + diffX + "px";
+        currentTarget.style.top = currentTarget.offsetTop + diffY + "px";
+    }
 
     return (
         <>
@@ -24,8 +83,26 @@ export function ActivityElement({
 
                 return (
                     <div
+                        ref={activityRef}
                         key={activity.id}
-                        className={`group hover:flex md:flex w-full justify-${itemsPosition}`}
+                        className={` group hover:flex md:flex w-full justify-${itemsPosition}`}
+                        // style={{ top: "19px", left: "-14px", width: "100px" }}
+                        style={{ width: "100px" }}
+                        // onDragStart={() =>
+                        //     setSelectedSchedule({
+                        //         date: schedule.date,
+                        //         activityId: activity.id,
+                        //         eventType: "drag",
+                        //     })
+                        // }
+                        onDragStart={(event) =>
+                            handleDrag(event, {
+                                date: schedule.date,
+                                activityId: activity.id,
+                            })
+                        }
+                        // onMouseDown={handleMouseDown}
+                        draggable={true}
                     >
                         <div
                             className={`md:hidden group-hover:hidden h-3 mb-1 bg-${style.color} 
@@ -39,8 +116,9 @@ export function ActivityElement({
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setSelectedSchedule({
-                                    date: schedule.day,
+                                    date: schedule.date,
                                     activityId: activity.id,
+                                    eventType: "click",
                                 });
                             }}
                         >

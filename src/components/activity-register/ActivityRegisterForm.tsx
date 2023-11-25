@@ -65,7 +65,7 @@ export function ActivityRegisterForm() {
         setStartInput("");
         setEndInput("");
         setDescriptionInput("");
-        setSelectedSchedule({ activityId: "", date: 0 });
+        setSelectedSchedule({ activityId: "", date: 0, eventType: "" });
         setShowModal(false);
     }
 
@@ -96,11 +96,12 @@ export function ActivityRegisterForm() {
             (activity) => activity.id === selectedSchedule.activityId
         );
 
-        if (activity) {
+        if (activity && selectedSchedule.eventType == "click") {
             updateForm(activity);
             setShowModal(true);
         }
-        if (selectedSchedule.date != 0) setShowModal(true);
+        if (selectedSchedule.date != 0 && selectedSchedule.eventType == "click")
+            setShowModal(true);
     }, [selectedSchedule]);
 
     useEffect(() => {

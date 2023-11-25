@@ -8,7 +8,7 @@ export type CreateActivityDTO = {
 };
 
 export type Schedule = {
-    day: number;
+    date: number;
     activities: Activity[];
 };
 

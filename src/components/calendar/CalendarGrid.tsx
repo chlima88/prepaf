@@ -7,7 +7,7 @@ type Props = {
 
 export function CalendarGrid({ data }: Props) {
     return (
-        <div className="grid grid-cols-7 gap-1 relative select-none">
+        <div className="grid grid-cols-7 gap-1 select-none">
             {[
                 "Domingo",
                 "Segunda",
